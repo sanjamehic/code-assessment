@@ -1,3 +1,58 @@
+## Taco Truck Locator – Solution
+
+This project is my implementation of the Taco Truck Locator code assessment.
+
+The application fetches taco truck location data from the provided API, filters locations by postal code, calculates distance from a simulated user location, and renders an interactive list with map integration and extended location details. The interface is fully responsive and follows the provided desktop and mobile mocks.
+
+### Features
+
+- Asynchronous API call using jQuery ($.ajax)
+- Distance calculation using the Haversine formula
+- Sorted results by distance (nearest first)
+- Interactive location cards
+- Static Google Maps rendering based on latitude/longitude
+
+##### Modal overlay with:
+
+- Full weekly opening hours
+- "View Full Details" external link
+- "Directions" link to Google Maps
+- Responsive layout (desktop split view + mobile toggle view)
+- Basic loading and error handling states
+
+### Tech Stack
+
+- HTML5
+- CSS3
+- Bootstrap 5
+- JavaScript (jQuery)
+- Google Static Maps API
+
+### How to Run
+
+1. Clone or download the repository.
+2. Open index.html in your browser.
+3. No build tools or server setup required.
+
+OR 
+
+You can view live demo here:
+
+https://sanjamehic.github.io/code-assessment/
+
+
+### Notes
+
+A fixed user latitude/longitude is used to simulate distance calculation.
+
+A sample postal code filter is applied to match the mock requirement.
+
+The Google Maps API key is included for demo purposes. In a production environment, this should be secured server-side.
+
+
+
+
+
 ## Taco Truck Locator Code Assessment
 
 Taco Truck Co. would like a simple truck locator to be created. This locator will show the businesses where the taco trucks are parked in front of.

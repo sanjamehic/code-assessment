@@ -181,7 +181,7 @@ function renderLocations(locations) {
         openModal(location);
       }
 
-      // Mobile switch
+      // Mobile
       showMapMobile();
     });
 
