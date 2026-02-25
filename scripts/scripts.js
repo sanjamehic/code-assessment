@@ -6,6 +6,7 @@ $(document).ready(function () {
     </div>
   </div>
 `);
+
   $.ajax({
     method: "GET",
     url: "https://my.api.mockaroo.com/locations.json?key=fcd8edc0",
@@ -41,7 +42,7 @@ $(document).ready(function () {
     .fail(function (error) {
       $("#locations-list").html(`
         <div class="text-center p-4 text-danger">
-          <p>Unable to load taco trucks. Please refresh the page.</p>
+          <p>Unable to load taco trucks. Please try again later.</p>
         </div>
       `);
     });
@@ -121,12 +122,12 @@ function getTodayStatus(location) {
     return new Date(1970, 0, 1, hours, minutes);
   };
 
-  const openDate = parseTime(open);
-  const closeDate = parseTime(close);
+  const openTime = parseTime(open);
+  const closeTime = parseTime(close);
 
   const current = new Date(1970, 0, 1, now.getHours(), now.getMinutes());
 
-  if (current < openDate || current > closeDate) {
+  if (current < openTime || current > closeTime) {
     return "Closed now";
   }
 
@@ -205,20 +206,6 @@ function renderLocations(locations) {
     container.append(card);
   });
 }
-
-$(document).on("click", function (e) {
-  if (window.innerWidth <= 768) return;
-  const clickedInsideCard = $(e.target).closest(".truck-card").length > 0;
-  const clickedInsideMap = $(e.target).closest(".map").length > 0;
-  const clickedModal = $(e.target).closest(".modal-overlay").length > 0;
-
-  if (!clickedInsideCard && !clickedInsideMap && !clickedModal) {
-    $(".truck-card").removeClass("active-card");
-    $("#map-image").hide().attr("src", "");
-    $("#map-placeholder").show();
-    $("#info-modal").fadeOut(200);
-  }
-});
 
 function activateCard(card, location) {
   $(".truck-card").removeClass("active-card");
@@ -326,3 +313,17 @@ function openDirections(location) {
 
   window.open(googleUrl, "_blank");
 }
+
+$(document).on("click", function (e) {
+  if (window.innerWidth <= 768) return;
+  const clickedInsideCard = $(e.target).closest(".truck-card").length > 0;
+  const clickedInsideMap = $(e.target).closest(".map").length > 0;
+  const clickedModal = $(e.target).closest(".modal-overlay").length > 0;
+
+  if (!clickedInsideCard && !clickedInsideMap && !clickedModal) {
+    $(".truck-card").removeClass("active-card");
+    $("#map-image").hide().attr("src", "");
+    $("#map-placeholder").show();
+    $("#info-modal").fadeOut(200);
+  }
+});
